@@ -8,6 +8,7 @@ import OnboardingScreen from '../screen/OnboardingScreen';
 import BottomNavigation from '../navigation/BottomNavigation';
 import ProductInfo from '../screen/ProductInfo';
 import Checkout from '../screen/Checkout';
+import AddToCart from '../screen/AddToCart';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,7 @@ const StackNavigation = () => {
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="shop" component={ProductInfo} />
         <Stack.Screen name="checkout" component={Checkout} />
+        <Stack.Screen name="add to cart" component={AddToCart} />
       </Stack.Navigator>
   )
 }
