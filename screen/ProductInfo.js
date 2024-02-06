@@ -2,10 +2,20 @@ import { View, Text , useEffect, TouchableOpacity, ScrollView } from 'react-nati
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Image } from 'react-native';
+import { addToCart } from '../redux/CardReducer';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const ProductInfo = ({ route}) => {
   const { product } = route.params;
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const addTocart = (item) =>{
+    dispatch(addToCart(item))
+  }
+
+  const cart = useSelector((state) => state.cart.cart);
+  console.log(cart);
 
   return (
     <ScrollView>
@@ -33,9 +43,10 @@ const ProductInfo = ({ route}) => {
 
 
       <TouchableOpacity style={{flexDirection:'row' , alignItems:'center' , justifyContent:'space-around' , backgroundColor:'green' , height:50 , borderRadius:20 , marginHorizontal:10 , marginTop:10}}
-      onPress={()=>navigation.navigate("checkout" , {
-        product: product
-      })}
+      // onPress={()=>navigation.navigate("checkout" , {
+      //   product: product
+      // })}
+      onPress={()=>addTocart({product:product})}
       >
         <Text style={{fontSize:20}}>Add To Card</Text>
         <Text style={{fontSize:20}}>₹ {product.price}</Text>

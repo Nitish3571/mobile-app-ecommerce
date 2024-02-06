@@ -4,7 +4,7 @@ import SearchBox from '../components/SearchBox';
 import { Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 
 const Shop = () => {
