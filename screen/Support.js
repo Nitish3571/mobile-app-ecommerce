@@ -1,14 +1,29 @@
-import { View, Text } from 'react-native'
+import { View, Text , StyleSheet} from 'react-native'
 import React from 'react'
-import Location from '../components/Location'
+import Location from '../components/LiveLocation'
+import LiveLocation from '../components/LiveLocation'
 
 const Support = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text>Support</Text>
-      <Location />
+      <LiveLocation />
     </View>
   )
 }
 
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    //   alignItems: 'center',
+    //   justifyContent: 'center',
+    //   padding: 20,
+    },
+  //   paragraph: {
+  //     fontSize: 18,
+  //     textAlign: 'center',
+  //   },
+  });
+
+  
 export default Support
