@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, StyleSheet, FlatList, Pressable , ActivityIndicator  } from 'react-native';
+import { View, Text, StatusBar, StyleSheet, FlatList, Pressable , ActivityIndicator, ScrollView  } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import SearchBox from '../components/SearchBox';
 import { Image } from 'react-native';
