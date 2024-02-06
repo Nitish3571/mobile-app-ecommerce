@@ -5,11 +5,15 @@ import { Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
+import { addToCart } from '../redux/CardReducer';
+import { useDispatch } from 'react-redux';
 
 
 const Shop = () => {
     const [product, setProduct] = useState([]);
     const [loading, setLoading] = useState(true);
+    
+  
 
   const getProduct = async () => {
     try {
@@ -40,7 +44,7 @@ const Shop = () => {
     getProduct();
   }, []);
 
-  // const cart = useSelector((state) => state.cart.cart);
+  const cart = useSelector((state) => state.cart.cart);
   // console.log(cart);
 
   if (loading) {
@@ -68,15 +72,21 @@ const Shop = () => {
 const ProductItem =(props)=>{
     const product = props.data;
     const navigation = useNavigation();
+    const dispatch = useDispatch();
+    const addTocart = (item) =>{
+      dispatch(addToCart(item))
+    }
     if (!product) {
       // Handle the case when product is undefined
       return null;
     }
     return(
-        <Pressable style={styles.product} onPress={()=>navigation.navigate("shop" , {
+      <View style={styles.product}>
+        <Pressable  onPress={()=>navigation.navigate("shop" , {
             product : product
         })}>
         <Image source={{ uri: product.images[0] }} style={{ height: 150, width: 150 , borderRadius:10 }} />
+        </Pressable>
         <View style={{flexDirection:'row' , justifyContent:'space-evenly' , alignItems:'center' , top:10 , marginBottom:20}}>
         <View>
         <Text numberOfLines={2} ellipsizeMode="tail">
@@ -85,11 +95,15 @@ const ProductItem =(props)=>{
         <Text>₹ {product.price}</Text>
         <Text>⭐⭐⭐⭐</Text>
         </View>
+        
         <View>
+        <Pressable onPress={()=>addTocart({product:product})}>
         <Ionicons name="cart" size={30} color="black" />
+        </Pressable>
         </View>
         </View>
-     </Pressable>
+     
+     </View>
     )
 }
 
