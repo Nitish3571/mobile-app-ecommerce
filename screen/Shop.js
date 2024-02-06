@@ -75,7 +75,7 @@ const ProductItem =(props)=>{
     const dispatch = useDispatch();
     const addTocart = (item) =>{
       dispatch(addToCart(item))
-    }
+    } 
     if (!product) {
       // Handle the case when product is undefined
       return null;
