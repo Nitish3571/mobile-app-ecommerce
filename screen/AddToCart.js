@@ -4,10 +4,12 @@ import {
   FlatList,
   Pressable,
   Image,
+  Button,
   StyleSheet,
   TouchableOpacity,
   ScrollView,
   TouchableHighlight,
+  Modal,
 } from "react-native";
 import React , {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,6 +28,11 @@ const AddToCart = () => {
   const dispatch = useDispatch();
   console.log(cart);
   const [selectedRadio , setSelectedRadio] = useState(true);
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible); 
+  };
 
   const totalAmount = cart.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -103,18 +110,30 @@ const AddToCart = () => {
           </View>
         <LiveLocation />
         </View>
-      <TouchableOpacity style={{marginHorizontal:10 }}>
+      <TouchableOpacity style={{marginHorizontal:10 }} onPress={toggleModal}>
         <Text style={{ color:'orange' , fontSize:16 }}>change</Text>
+        <LocationModal isVisible={isModalVisible} toggleModal={toggleModal} />
       </TouchableOpacity>
         </View>
       </View>
 
-      <View style={{ padding: 10 }}>
+      <View style={{ padding: 10 }}> 
         <Text style={{ fontSize: 18, fontWeight: "bold" }}>
           Total Amount: ₹{totalAmount.toFixed(2)}
         </Text>
       </View>
     </ScrollView>
+  );
+};
+
+const LocationModal = ({ isVisible, toggleModal }) => {
+  return (
+    <Modal visible={isVisible} swipeDirection={['down']} onSwipeComplete={toggleModal} onRequestClose={toggleModal}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text>Hello!</Text>
+        <Button title="Hide modal" onPress={toggleModal} />
+      </View>
+    </Modal>
   );
 };
 const splitTitle = (title) => {
