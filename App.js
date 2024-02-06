@@ -1,12 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View , SafeAreaView } from 'react-native';
+import SplaceScreen from './screen/SplaceScreen';
+import OnboardingScreen from './screen/OnboardingScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from 'react-redux';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    // <Provider>
+    <NavigationContainer style={styles.container}>
+      <SplaceScreen />
+      {/* <Text>Welcome Rana Jee</Text> */}
+      <StatusBar style="auto" /> 
+    </NavigationContainer>
+    // </Provider>
+    // <View style={styles.container}>
+    //   <OnboardingScreen />
+    // </View>
   );
 }
 
@@ -14,7 +24,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'center',
   },
 });
