@@ -8,6 +8,7 @@ const Home = () => {
     <SafeAreaView style={{flex:1,marginTop:50}}>
       <StatusBar backgroundColor={'black'} />
       <Text>Home Page </Text>
+      <Text>Next Page </Text>
       <Button title='Add to cart' onPress={()=>navigation.navigate("add to cart")} />
     </SafeAreaView>
   )
