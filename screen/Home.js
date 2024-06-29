@@ -7,9 +7,12 @@ const Home = () => {
   return (
     <SafeAreaView style={{flex:1,marginTop:50}}>
       <StatusBar backgroundColor={'black'} />
+      <View  style={{flex:2 , backgroundColor:'#f4f4f4' , justifyContent:'center' ,alignItems:'center'}}>
+
       <Text>Home Page </Text>
-      <Text>Next Page </Text>
-      <Button title='Add to cart' onPress={()=>navigation.navigate("add to cart")} />
+      <Button title='Go to Shop' onPress={() => navigation.navigate("Shop")}/>
+      </View>
+      <Button  title='Add to cart' onPress={()=>navigation.navigate("add to cart")} />
     </SafeAreaView>
   )
 }
